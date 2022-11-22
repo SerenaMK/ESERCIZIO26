@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-// ABSTRACT CLASS - la superclasse
+// ABSTRACT CLASS - superclasse
 var Lavoratore = /** @class */ (function () {
     function Lavoratore(_redditoannuolordo, _codredd, _tasseinps, _tasseirpef) {
         this.redditoannuolordo = _redditoannuolordo;
@@ -38,93 +38,54 @@ var Lavoratore = /** @class */ (function () {
 // SOTTOCLASSI
 var Professionista = /** @class */ (function (_super) {
     __extends(Professionista, _super);
-    function Professionista(_redditoannuolordo, _codredd, _tasseinps, _tasseirpef) {
-        return _super.call(this, _redditoannuolordo, _codredd, _tasseinps, _tasseirpef) || this;
+    function Professionista(_redditoannuolordo) {
+        return _super.call(this, _redditoannuolordo, 78, 25.72, 5) || this;
     }
     return Professionista;
 }(Lavoratore));
 var Artigiano = /** @class */ (function (_super) {
     __extends(Artigiano, _super);
-    function Artigiano(_redditoannuolordo, _codredd, _tasseinps, _tasseirpef) {
-        return _super.call(this, _redditoannuolordo, _codredd, _tasseinps, _tasseirpef) || this;
+    function Artigiano(_redditoannuolordo) {
+        return _super.call(this, _redditoannuolordo, 67, 35, 15) || this;
     }
     return Artigiano;
 }(Lavoratore));
 var Commerciante = /** @class */ (function (_super) {
     __extends(Commerciante, _super);
-    function Commerciante(_redditoannuolordo, _codredd, _tasseinps, _tasseirpef) {
-        return _super.call(this, _redditoannuolordo, _codredd, _tasseinps, _tasseirpef) || this;
+    function Commerciante(_redditoannuolordo) {
+        return _super.call(this, _redditoannuolordo, 40, 35, 15) || this;
     }
     return Commerciante;
 }(Lavoratore));
-var prof1 = new Professionista(30000, 78, 25.72, 5);
-var artig1 = new Professionista(20000, 67, 35, 15);
-var comm1 = new Professionista(40000, 40, 35, 15);
-console.log(prof1);
-////////////////////////////////////////////////////////////////////////////////////////
-// SON ACCOUNT
-// class SonAccount {
-//     // Con quanti soldi parto
-//     balanceInit: number;
-//     constructor(_balanceInit: number) {
-//         this.balanceInit = _balanceInit;
-//     }
-//     // Deposita quantità
-//     deposit(num: number): number {
-//         this.balanceInit = this.balanceInit + num;
-//         return num;
-//     }
-//     // Deposita 100
-//     depositFixed(): number {
-//         this.deposit(100);
-//         return 100;
-//     }
-//     // Ritira quantità
-//     withdraw(num: number): number {
-//         this.balanceInit = this.balanceInit - num;
-//         return num;
-//     }
-//     // Ritira 100
-//     withdrawFixed(): number {
-//         this.withdraw(100);
-//         return 100;
-//     }
-// }
-//////////////////////////////////////////////////
-// MOTHER ACCOUNT
-// class MotherAccount extends SonAccount {
-//     constructor(_balanceInit: number) {
-//         super(_balanceInit);
-//     }
-//     // Deposita quantità
-//     deposit(num: number): number {
-//         this.balanceInit = this.balanceInit + this.getInterest(num);
-//         return this.getInterest(num);
-//     }
-//     // Deposita 100
-//     depositFixed(): number {
-//         this.deposit(100);
-//         return this.getInterest(100);
-//     }
-//     // Interesse del 10% di number
-//     interest(number: number): number {
-//         return (10 / 100) * number;
-//     }
-//     getInterest(num: number): number {
-//         return num - this.interest(num);
-//     }
-// }
-// CONSOLE LOGS
-// let mother = new MotherAccount(0);
-// console.log("");
-// console.log("---MOTHER ACCOUNT MOVEMENTS---");
-// console.log("Balance: " + mother.balanceInit + " €");
-// console.log("> Depositing: " + mother.deposit(50) + " €");
-// console.log("Balance: " + mother.balanceInit + " €");
-// console.log("> Depositing: " + mother.depositFixed() + " €");
-// console.log("Balance: " + mother.balanceInit + " €");
-// console.log("> Withdrawing: " + mother.withdrawFixed() + " €");
-// console.log("Balance: " + mother.balanceInit + " €");
-// console.log("> Withdrawing: " + mother.withdraw(20) + " €");
-// console.log("Balance: " + mother.balanceInit + " €");
-// console.log("---------------------------");
+// ISTANZE DI CLASSE
+var prof1 = new Professionista(30000);
+var artig1 = new Artigiano(20000);
+var comm1 = new Commerciante(40000);
+//// CONSOLE LOGS
+// Console log libero professionista
+console.log("----------------------------------");
+console.log("> LIBERO PROFESSIONISTA");
+console.log("Reddito annuo lordo: ", prof1.redditoannuolordo, "€");
+console.log("Reddito annuo netto: ", prof1.getRedditoAnnuoNetto(), "€");
+console.log("Utile tasse: ", prof1.getUtileTasse(), "€");
+console.log("Tasse INPS: ", prof1.getTasseInps(), "€");
+console.log("Tasse IRPEF: ", prof1.getTasseIrpef(), "€");
+console.log("----------------------------------");
+// Console log artigiano
+console.log("----------------------------------");
+console.log("> ARTIGIANO");
+console.log("Reddito annuo lordo: ", artig1.redditoannuolordo, "€");
+console.log("Reddito annuo netto: ", artig1.getRedditoAnnuoNetto(), "€");
+console.log("Utile tasse: ", artig1.getUtileTasse(), "€");
+console.log("Tasse INPS: ", artig1.getTasseInps(), "€");
+console.log("Tasse IRPEF: ", artig1.getTasseIrpef(), "€");
+console.log("----------------------------------");
+// Console log commerciante
+console.log("----------------------------------");
+console.log("> COMMERCIANTE");
+console.log("Reddito annuo lordo: ", comm1.redditoannuolordo, "€");
+console.log("Reddito annuo netto: ", comm1.getRedditoAnnuoNetto(), "€");
+console.log("Utile tasse: ", comm1.getUtileTasse(), "€");
+console.log("Tasse INPS: ", comm1.getTasseInps(), "€");
+console.log("Tasse IRPEF: ", comm1.getTasseIrpef(), "€");
+console.log("----------------------------------");
